@@ -41,7 +41,7 @@ def dict_list(dic: dict):  # 定义函数将字典转化为列表
 
 
 def similarity(tests, trainings, labels, k):  # tests:测试集 # trainings:训练样本集 # labels:标签 # k: 邻近的个数
-    data_line = trainings.shape[0]  # 获取训练集的行数data_hang
+    data_line = trainings.shape[0]  # 获取训练集的行数data_line
     zu = np.tile(tests, (data_line, 1)) - trainings  # 用tile把测试集tests重构成一个 data_line行、1列的1维数组
     q = np.sqrt((zu ** 2).sum(axis=1)).argsort()  # 计算完距离后从低到高排序,arg_sort返回的是索引
     my_dict = {}  # 设置一个dict
