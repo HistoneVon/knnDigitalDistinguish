@@ -41,8 +41,8 @@ def dict_list(dic: dict):  # 定义函数将字典转化为列表
 
 
 def similarity(tests, trainings, labels, k):  # tests:测试集 # trainings:训练样本集 # labels:标签 # k: 邻近的个数
-    data_hang = trainings.shape[0]  # 获取训练集的行数data_hang
-    zu = np.tile(tests, (data_hang, 1)) - trainings  # 用tile把测试集tests重构成一个 data_hang行、1列的1维数组
+    data_line = trainings.shape[0]  # 获取训练集的行数data_hang
+    zu = np.tile(tests, (data_line, 1)) - trainings  # 用tile把测试集tests重构成一个 data_line行、1列的1维数组
     q = np.sqrt((zu ** 2).sum(axis=1)).argsort()  # 计算完距离后从低到高排序,arg_sort返回的是索引
     my_dict = {}  # 设置一个dict
     for i in range(k):  # 根据我们的k来统计出现频率，样本类别
@@ -62,7 +62,7 @@ def distinguish():  # 定义一个识别手写数字的函数
         file_label = int(doc_name[0])  # 取文件名第一位文件的标签
         label_list.append(file_label)  # 将标签添加至label_list中
         train_zero[i, :] = read_file(r'%s\%s' % (trainingDigits, doc_name))  # 转成1024的数组
-        # 下面是测试集
+    # 下面是测试集
     errorNum = 0  # 记录error的初值
     testNum = len(test)  # 同上 获取测试集的长度
     errFile = []  # 定义一个空列表
