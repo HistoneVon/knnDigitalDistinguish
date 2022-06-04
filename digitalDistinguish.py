@@ -70,7 +70,7 @@ def distinguish():  # 定义一个识别手写数字的函数
         test_doc_name = test[i]  # 通过i当作下标来获取测试集里面的文件
         test_label = int(test_doc_name[0])  # 拿到测试文件的名字 拿到我们的数字标签
         test_data_or = read_file(r'%s\%s' % (testDigits, test_doc_name))  # 调用read_file操作测试集
-        result = similarity(test_data_or, train_zero, label_list, 3)  # 调用distinguish返回了result
+        result = similarity(test_data_or, train_zero, label_list, 3)  # 调用similarity返回了result
         print("正在测试 %d, 内容是 %d" % (test_label, result))  # 输出result和标签
         if result != test_label:  # 判断标签是否等于测试名
             errorNum += 1  # 不是则+1 记录次数
